@@ -539,8 +539,8 @@ let account;
 const accountEl = document.getElementById("account");
 document.addEventListener("DOMContentLoaded", loadApp());
 async function loadApp() {
-    provider = new (0, _ethers.ethers).providers.Web3Provider(window.ethereum, "any");
-    signer = provider.getSigner();
+    provider = new (0, _ethers.ethers).BrowserProvider(window.ethereum);
+    signer = await provider.getSigner();
     if (!signer) window.location.reload();
     const accounts = await provider.send("eth_requestAccounts", []);
     account = accounts[0];
